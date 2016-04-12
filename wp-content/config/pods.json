@@ -1,6 +1,6 @@
 {
     "meta": {
-        "build": 1460500713,
+        "build": 1460501039,
         "version": "2.6.2"
     },
     "pods": {
@@ -105,7 +105,7 @@
                     "class": "",
                     "datetime_allow_empty": "1",
                     "datetime_format": "fjy",
-                    "datetime_html5": "1",
+                    "datetime_html5": "0",
                     "datetime_repeatable": "0",
                     "datetime_time_format": "h_mma",
                     "datetime_time_format_24": "hh_mm",
