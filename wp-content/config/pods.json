@@ -1,6 +1,6 @@
 {
     "meta": {
-        "build": 1460501039,
+        "build": 1460542714,
         "version": "2.6.2"
     },
     "pods": {
@@ -131,7 +131,8 @@
                     "weight": 0
                 }
             },
-            "has_archive": "0",
+            "has_archive": "1",
+            "has_archive_slug": "sessions",
             "hierarchical": "0",
             "id": 8,
             "label": "Sessions",
@@ -144,8 +145,8 @@
             "query_var": "1",
             "rewrite": "1",
             "rewrite_feeds": "0",
-            "rewrite_pages": "1",
-            "rewrite_with_front": "1",
+            "rewrite_pages": "0",
+            "rewrite_with_front": "0",
             "show_in_admin_bar": "1",
             "show_in_menu": "1",
             "show_in_nav_menus": "1",
