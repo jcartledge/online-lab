@@ -8,7 +8,7 @@ gulp.task('stage', function () {
     require('./ftp.json')['stage']
   ));
 
-  const dest = 'test';
+  const dest = '.';
   return gulp.src('**', { base: 'wordpress', cwd: 'wordpress', buffer: false })
     .pipe(conn.newer(dest)) // only upload newer files
     .pipe(conn.dest(dest));
