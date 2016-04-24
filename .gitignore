@@ -19,7 +19,6 @@ wp-content/plugins/hello.php
 
 Vagrantfile
 .vagrant
-.beetbox
 
 node_modules
 ftp.json
