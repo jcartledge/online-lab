@@ -10,6 +10,6 @@ gulp.task('stage', function () {
 
   const dest = '.';
   return gulp.src('**', { base: 'wordpress', cwd: 'wordpress', buffer: false })
-    .pipe(conn.newer(dest)) // only upload newer files
+    .pipe(conn.newerOrDifferentSize(dest)) // only upload newer files
     .pipe(conn.dest(dest));
 });
