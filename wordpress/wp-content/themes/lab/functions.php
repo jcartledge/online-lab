@@ -1,13 +1,12 @@
 <?php
 /**
- * lab functions and definitions.
+ * Lab functions and definitions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
  * @package lab
  */
 
-if ( ! function_exists( 'lab_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -77,7 +76,7 @@ function lab_setup() {
 		'default-image' => '',
 	) ) );
 }
-endif;
+
 add_action( 'after_setup_theme', 'lab_setup' );
 
 /**
