@@ -1,0 +1,21 @@
+{
+  "name": "lab",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "prebuild:css": "node-sass --include-path scss src/scss/main.scss build/style.css",
+    "build:css": "postcss --use autoprefixer -b 'last 2 versions' < build/style.css | postcss --use cssnano > style.css",
+    "build": "npm run build:css",
+    "build:watch": "watch 'npm run build' src/*"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "cssnano": "^3.6.2",
+    "node-sass": "^3.7.0",
+    "postcss-cli": "^2.5.2",
+    "watch": "^0.18.0"
+  }
+}

@@ -24,3 +24,4 @@ node_modules
 ftp.json
 tags*
 .vimrc
+build
