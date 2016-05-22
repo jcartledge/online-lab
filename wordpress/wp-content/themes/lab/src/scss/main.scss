@@ -1,11 +1,12 @@
 @import "style";
 
 $fullWidth: 1080px; 
+$darkGreen: #003300;
 
 .page {
-  max-width: $fullWidth;
-  width: 100%;
-  margin: auto;
+	max-width: $fullWidth;
+	width: 100%;
+	margin: auto;
 }
 
 .site-header {
@@ -13,4 +14,32 @@ $fullWidth: 1080px;
 	flex-direction: row;
 	justify-content: space-between;
 	width: 100%;
+}
+
+.nav-menu {
+  display: flex;
+  list-style-type: none;
+  padding: 1em;
+  font-size: small;
+  li {
+    margin-left: 0.5em;
+  }
+  a {
+    padding: 0.5em;
+    color: black;
+    text-decoration: none;
+  }
+  .current-menu-item a, 
+  a:hover {
+    color: $darkGreen;
+    border-bottom: 2px solid $darkGreen;
+  }
+}
+
+.box {
+  padding: 1em;
+  border: 1px solid grey;
+  p {
+    margin: 0;
+  }
 }

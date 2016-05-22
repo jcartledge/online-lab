@@ -17,13 +17,17 @@ if ( $sessions->fetch() ) :
 	$url = $sessions->field( 'permalink' );
 ?>
 <p>Next session:</p>
-<div class="session-summary">
+<div class="box">
 	<p>
 		The next session is <?php esc_html_e( $session_time->diffForHumans() ); ?>,
 		on <?php esc_html_e( $session_time->format( 'l F j, g.iA' ) ); ?>.<br>
 		<a href="<?php echo esc_url( $url ); ?>">Go to the session now</a>.
 	</p>
 </div>
+<?php
+else :
+?>
+<p>There are no upcoming sessions.</p>
 <?php
 endif;
 ?>
