@@ -7,6 +7,8 @@
  * @package lab
  */
 
+require_once 'vendor/autoload.php';
+
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
