@@ -29,8 +29,8 @@
 
 		<?php if ( is_user_logged_in() ) : ?>
 			<nav id="site-navigation" class="main-navigation" role="navigation">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'lab' ); ?></button>
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'lab' ); ?></button>
+				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'main' ) ); ?>
 			</nav><!-- #site-navigation -->
 		<?php else :
 			wp_loginout( $_SERVER['REQUEST_URI'] );
