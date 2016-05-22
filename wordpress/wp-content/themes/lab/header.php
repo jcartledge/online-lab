@@ -32,9 +32,9 @@
 				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'lab' ); ?></button>
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 			</nav><!-- #site-navigation -->
-		<?php else : ?>
-			<button>Sign in</button>
-		<?php endif; ?>
+		<?php else :
+			wp_loginout( $_SERVER['REQUEST_URI'] );
+		endif; ?>
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">
