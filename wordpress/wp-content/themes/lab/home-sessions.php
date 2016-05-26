@@ -16,7 +16,6 @@ if ( $sessions->fetch() ) :
 	$session_time = new Carbon( $sessions->field( 'session_time' ) );
 	$url = $sessions->field( 'permalink' );
 ?>
-<p>Next session:</p>
 <div class="box">
 	<p>
 		The next session is <?php esc_html_e( $session_time->diffForHumans() ); ?>,

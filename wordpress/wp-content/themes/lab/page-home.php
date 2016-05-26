@@ -16,6 +16,7 @@ get_header(); ?>
 				<h2>Projects</h2>
 				<?php include 'home-projects.php'; ?>
 				<h2>People</h2>
+				<?php include 'home-people.php'; ?>
 			<?php
 				else :
 					while ( have_posts() ) : the_post();

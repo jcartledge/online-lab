@@ -5,8 +5,6 @@
  * @package lab
  */
 
-use Carbon\Carbon;
-
 $projects = pods( 'project' )->find([
 	'limit' => 3,
 ]);
@@ -17,9 +15,10 @@ while ( $projects->fetch() ) :
 	$url = $projects->field( 'permalink' );
 ?>
 	<p>
-	<a href="<?php echo esc_url( $url ); ?>"><?php esc_html_e( $projects->field( 'name' ) ); ?></a>
+		<a href="<?php echo esc_url( $url ); ?>"><?php esc_html_e( $projects->field( 'name' ) ); ?></a>
 	</p>
-</div>
 <?php
 endwhile;
 ?>
+	<a href="/projects">See all projects</a>
+</div>
