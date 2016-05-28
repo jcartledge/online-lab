@@ -151,3 +151,19 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Join an array of strings with correct English separators.
+ *
+ * @param Array  $arr Strings to join.
+ * @param String $join Text to join with, for all but last pair.
+ * @param String $last_join Text to join last pair with.
+ */
+function join_strings( $arr, $join = ', ', $last_join = ' and ' ) {
+	$last = array_pop( $arr );
+	if ( count( $arr ) === 0 ) {
+		return $last;
+	}
+	$first = implode( $join, $arr );
+	return implode( $last_join, [ $first, $last ] );
+}

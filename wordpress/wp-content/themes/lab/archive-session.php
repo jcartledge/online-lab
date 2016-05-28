@@ -1,26 +1,30 @@
 <?php
 /**
- * The template for displaying archive pages.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * The template for displaying sessions archive.
  *
  * @package lab
  */
+
+$user = new Groups_User( get_current_user_id() );
+$groups = array_map( function ( $group ) {
+	return $group->name;
+}, $user->groups );
+$groups = join_strings(array_filter($groups, function ( $name ) {
+	return 'Registered' !== $name;
+} ) );
+$heading = "Sessions for ${groups}.";
 
 get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
+		<header class="page-header">
+			<h1><?php esc_html_e( $heading ); ?></h1>
+		</header>
+
 		<?php
 		if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="taxonomy-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
 
 			<?php
 			/* Start the Loop */

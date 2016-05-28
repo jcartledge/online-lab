@@ -8,7 +8,7 @@ h2 {
   margin-bottom: 0.5em;
 }
 
-.page {
+.site {
 	max-width: $fullWidth;
 	width: 100%;
 	margin: auto;
@@ -47,4 +47,8 @@ h2 {
 	p {
 		margin: 0;
 	}
+}
+
+a[href="#"] {
+  color: red;
 }
