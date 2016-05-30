@@ -6,15 +6,13 @@
  */
 
 use Carbon\Carbon;
+include_once 'inc/sessions.php';
 
-$sessions = pods( 'session' )->find([
-	'where' => 'session_time.meta_value > NOW()',
-	'orderby' => 'session_time.meta_value ASC',
-	'limit' => 1,
-]);
-if ( $sessions->fetch() ) :
-	$session_time = new Carbon( $sessions->field( 'session_time' ) );
-	$url = $sessions->field( 'permalink' );
+$next_session = get_next_session();
+
+if ( $next_session->fetch() ) :
+	$session_time = new Carbon( $next_session->field( 'session_time' ) );
+	$url = $next_session->field( 'permalink' );
 ?>
 <div class="box">
 	<p>
@@ -22,7 +20,9 @@ if ( $sessions->fetch() ) :
 		on <?php esc_html_e( $session_time->format( 'l F j, g.iA' ) ); ?>.<br>
 		<a href="<?php echo esc_url( $url ); ?>">Go to the session now</a>.
 	</p>
+	<?php if ( '/sessions/' !== filter_input( INPUT_SERVER, 'REQUEST_URI' ) ) : ?>
 	<p><a href="/sessions">See all sessions</a></p>
+	<?php endif; ?>
 </div>
 <?php
 else :

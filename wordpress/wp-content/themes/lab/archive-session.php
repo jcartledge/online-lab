@@ -2,16 +2,15 @@
 /**
  * The template for displaying sessions archive.
  *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
  * @package lab
  */
 
-$user = new Groups_User( get_current_user_id() );
-$groups = array_map( function ( $group ) {
-	return $group->name;
-}, $user->groups );
-$groups = join_strings(array_filter($groups, function ( $name ) {
-	return 'Registered' !== $name;
-} ) );
+use Carbon\Carbon;
+include_once 'inc/groups.php';
+
+$groups = join_strings( user_group_names() );
 $heading = "Sessions for ${groups}.";
 
 get_header(); ?>
@@ -22,6 +21,8 @@ get_header(); ?>
 		<header class="page-header">
 			<h1><?php esc_html_e( $heading ); ?></h1>
 		</header>
+
+		<?php include 'home-sessions.php'; ?>
 
 		<?php
 		if ( have_posts() ) : ?>
