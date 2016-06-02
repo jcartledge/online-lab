@@ -5,7 +5,7 @@ $darkGreen: #003300;
 
 h2 {
 	margin-top: 1.5em;
-  margin-bottom: 0.5em;
+	margin-bottom: 0.5em;
 }
 
 .site {
@@ -49,6 +49,6 @@ h2 {
 	}
 }
 
-a[href="#"] {
-  color: red;
+.unimplemented, a[href="#"] {
+	color: red;
 }

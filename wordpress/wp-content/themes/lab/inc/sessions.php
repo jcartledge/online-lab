@@ -39,6 +39,16 @@ function get_user_future_sessions( $args = [] ) {
 }
 
 /**
+ * Get past sessions for current user.
+ *
+ * @param Array $args Additional args for find.
+ * @return Pods.
+ */
+function get_user_past_sessions( $args = [] ) {
+	return get_user_sessions( [ 'session_time.meta_value < NOW()' ], $args );
+}
+
+/**
  * Get next session for current user.
  *
  * @return Pods.

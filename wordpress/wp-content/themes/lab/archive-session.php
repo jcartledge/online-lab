@@ -22,6 +22,8 @@ get_header(); ?>
 			<h1><?php esc_html_e( $heading ); ?></h1>
 		</header>
 
+		<?php include 'past-sessions.php'; ?>
+
 		<?php include 'home-sessions.php'; ?>
 
 		<?php
