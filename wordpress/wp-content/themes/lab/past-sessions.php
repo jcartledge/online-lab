@@ -36,13 +36,14 @@ Past sessions
 <?php
 while ( $past_sessions->fetch() ) :
 	$session_name = $past_sessions->field( 'name' );
-	$session_time = new Carbon( $past_sessions->field( 'session_time' ) );
+	$session_time = ( new Carbon( $past_sessions->field( 'session_time' ) ) )->format( 'l F j, g.ia' );
 	$url = $past_sessions->field( 'permalink' );
 ?>
-<p><a href="<?php esc_url( $url ); ?>"><?php esc_html_e( sprintf( '%s - %s', $session_name, $session_time ) ); ?></a></p>
+<p><a href="<?php echo esc_url( $url ); ?>"><?php esc_html_e( sprintf( '%s - %s', $session_name, $session_time ) ); ?></a></p>
 <?php
 endwhile;
 ?>
+<a href="/sessions/">Hide past sessions</a>
 </div>
 <?php
 	else :
