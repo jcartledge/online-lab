@@ -167,3 +167,21 @@ function join_strings( $arr, $join = ', ', $last_join = ' and ' ) {
 	$first = implode( $join, $arr );
 	return implode( $last_join, [ $first, $last ] );
 }
+
+/**
+ * Return the correct singular or plural string.
+ *
+ * @param int    $count The number of items.
+ * @param string $singular String to return for one item.
+ * @param string $plural String to return for zero or more than one items.
+ * @return string
+ */
+function inflect( $count, $singular, $plural ) {
+	static $formatter;
+	if ( empty( $formatter ) ) {
+		$formatter = new NumberFormatter( 'en', NumberFormatter::SPELLOUT );
+	}
+	$count_english = $formatter->format( $count );
+	return sprintf( '%s %s', $count_english, 1 === $count ? $singular : $plural );
+}
+

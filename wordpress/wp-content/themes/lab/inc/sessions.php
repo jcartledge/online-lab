@@ -5,7 +5,10 @@
  * @package lab
  */
 
+use Carbon\Carbon;
 require_once 'groups.php';
+
+define( 'SESSION_TIME_FORMAT', 'l F j, g.ia' );
 
 /**
  * Get sessions for current user.
@@ -57,3 +60,16 @@ function get_next_session() {
 	return get_user_future_sessions( [ 'limit' => 1 ] );
 }
 
+/**
+ * Return HTML for a session detail listing.
+ *
+ * @param Pods $session The Pods object contining the session.
+ * @return string HTML
+ */
+function session_detail( $session ) {
+	$session_name = $session->field( 'name' );
+	$session_time = ( new Carbon( $session->field( 'session_time' ) ) )->format( SESSION_TIME_FORMAT );
+	$session_label = sprintf( '%s - %s', $session_name, $session_time );
+	$url = $session->field( 'permalink' );
+	return sprintf( '<p><a href="%s">%s</a></p>', esc_url( $url ), esc_html( $session_label ) );
+}
