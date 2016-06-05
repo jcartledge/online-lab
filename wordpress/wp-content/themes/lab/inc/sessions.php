@@ -68,8 +68,18 @@ function get_next_session() {
  */
 function session_detail( $session ) {
 	$session_name = $session->field( 'name' );
-	$session_time = ( new Carbon( $session->field( 'session_time' ) ) )->format( SESSION_TIME_FORMAT );
+	$session_time = session_time( $session );
 	$session_label = sprintf( '%s - %s', $session_name, $session_time );
 	$url = $session->field( 'permalink' );
 	return sprintf( '<p><a href="%s">%s</a></p>', esc_url( $url ), esc_html( $session_label ) );
+}
+
+/**
+ * Formatted session time string.
+ *
+ * @param Pods $session The Pods object containing the session.
+ * @return String HTML
+ */
+function session_time( $session ) {
+	return ( new Carbon( $session->field( 'session_time' ) ) )->format( SESSION_TIME_FORMAT );
 }

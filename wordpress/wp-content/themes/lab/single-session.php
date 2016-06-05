@@ -6,45 +6,37 @@
  */
 
 require_logged_in_user();
+require_once 'inc/sessions.php';
+require_once 'inc/projects.php';
+
+$slug = pods_v( 'last', 'url' );
+$session = pods( 'session', $slug );
+$session_name = $session->field( 'name' );
+$session_time = session_time( $session );
+$session_projects = $session->field( 'projects' );
 
 get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-		<?php while ( have_posts() ) : the_post(); ?>
+			<h1><?php esc_html_e( $session_name ); ?></h1>
 
-			<h1 class="unimplemented">Session name</h1>
-
-			<p class="session-date unimplemented">Tuesday May 3, 6.45PM.</p>
+			<p class="session-date"><?php esc_html_e( $session_time ); ?></p>
 			<p class="session-group unimplemented">
 				[Group 1](<a href="#" class="unimplemented">group detail</a>)
 			</p>
 
 			<p class="session-description unimplemented">
-				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
-				eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
-				montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-				eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
-				fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,
+				<?php echo $session->display( 'post_content' ); // WPCS: XSS OK. ?>
 			</p>
 
-			<h2>Projects</h2>
-
-			<div class="project-summary unimplemented">
-				<p class="project-summary__link"><a href="#">Project name</a></p>
-				<p class="project-summary__description">
-					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
-					eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
-					montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-					eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
-					fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,
-				</p>
-			</div>
-
-
-
-		<?php endwhile; ?>
+			<?php if ( count( $session_projects ) ) : ?>
+				<h2>Projects</h2>
+				<?php foreach ( $session_projects as $session_project ) :
+					echo project_detail( $session_project ); // WPCS: XSS OK.
+				endforeach;
+			endif; ?>
 
 		</main>
 	</div>
