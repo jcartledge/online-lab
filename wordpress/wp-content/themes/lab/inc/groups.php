@@ -22,3 +22,33 @@ function user_group_names() {
 		return 'Registered' !== $name;
 	} );
 }
+
+/**
+ * Get the names of groups that can see this post.
+ *
+ * @return Array Group names.
+ */
+function post_group_names() {
+	$groups = new Groups_Post_Access();
+	return $groups->get_read_post_capabilities( get_the_ID() );
+}
+
+/**
+ * Build a URL from a group name.
+ *
+ * @param String $group_name The name of the group.
+ * @return String URL
+ */
+function group_url( $group_name ) {
+	return sprintf( '/groups/%s', sanitize_title( $group_name ) );
+}
+
+/**
+ * Convert a group name into an HTML link.
+ *
+ * @param String $group_name The name of the group.
+ * @return String Link.
+ */
+function link_group_name( $group_name ) {
+	return sprintf( '<a href="%s">%s</a>', group_url( $group_name ), ucfirst( $group_name ) );
+}

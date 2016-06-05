@@ -8,12 +8,15 @@
 require_logged_in_user();
 require_once 'inc/sessions.php';
 require_once 'inc/projects.php';
+require_once 'inc/groups.php';
 
 $slug = pods_v( 'last', 'url' );
 $session = pods( 'session', $slug );
 $session_name = $session->field( 'name' );
 $session_start_time = session_start_time( $session );
 $session_projects = $session->field( 'projects' );
+
+$group_links = join_strings( array_map( 'link_group_name', post_group_names() ) );
 
 get_header(); ?>
 
@@ -23,8 +26,8 @@ get_header(); ?>
 			<h1><?php esc_html_e( $session_name ); ?></h1>
 
 			<p class="session-date"><?php esc_html_e( $session_start_time ); ?></p>
-			<p class="session-group unimplemented">
-				[Group 1](<a href="#" class="unimplemented">group detail</a>)
+			<p class="session-group">
+				<?php echo $group_links; // WPCS: XSS OK. ?>
 			</p>
 
 			<p class="session-description unimplemented">
