@@ -191,7 +191,7 @@ function inflect( $count, $singular, $plural ) {
  * @param String $message Text to output before going away.
  */
 function deny( $message = 'Nope.' ) {
-	wp_die( $message, 403 );
+	wp_die( $message, 403 ); // WPCS: XSS OK.
 }
 
 /**
@@ -205,3 +205,10 @@ function require_logged_in_user( $message = 'Nope.' ) {
 	}
 }
 
+add_filter( 'nav_menu_css_class', function ( $classes, $item ) {
+	$type = get_post_type();
+	if ( in_array( $type, [ 'project', 'session' ], true ) && "/${type}s" === $item->url ) {
+		$classes[] = 'current-menu-item';
+	}
+	return $classes;
+} , 10, 2 );
