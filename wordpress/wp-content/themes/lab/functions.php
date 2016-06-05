@@ -100,13 +100,13 @@ add_action( 'after_setup_theme', 'lab_content_width', 0 );
  */
 function lab_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'lab' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'lab' ),
+		'name'					=> esc_html__( 'Sidebar', 'lab' ),
+		'id'						=> 'sidebar-1',
+		'description'	 => esc_html__( 'Add widgets here.', 'lab' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'after_widget'	=> '</section>',
+		'before_title'	=> '<h2 class="widget-title">',
+		'after_title'	 => '</h2>',
 	) );
 }
 add_action( 'widgets_init', 'lab_widgets_init' );
@@ -155,7 +155,7 @@ require get_template_directory() . '/inc/jetpack.php';
 /**
  * Join an array of strings with correct English separators.
  *
- * @param Array  $arr Strings to join.
+ * @param Array	 $arr Strings to join.
  * @param String $join Text to join with, for all but last pair.
  * @param String $last_join Text to join last pair with.
  */
@@ -183,5 +183,25 @@ function inflect( $count, $singular, $plural ) {
 	}
 	$count_english = $formatter->format( $count );
 	return sprintf( '%s %s', $count_english, 1 === $count ? $singular : $plural );
+}
+
+/**
+ * End with 403 error.
+ *
+ * @param String $message Text to output before going away.
+ */
+function deny( $message = 'Nope.' ) {
+	wp_die( $message, 403 );
+}
+
+/**
+ * End with 403 if not logged in user.
+ *
+ * @param String $message Text to output before going away.
+ */
+function require_logged_in_user( $message = 'Nope.' ) {
+	if ( ! is_user_logged_in() ) {
+		deny( $message );
+	}
 }
 

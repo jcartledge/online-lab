@@ -7,6 +7,8 @@
  * @package lab
  */
 
+require_logged_in_user();
+
 use Carbon\Carbon;
 include_once 'inc/groups.php';
 
