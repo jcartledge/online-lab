@@ -35,3 +35,24 @@ function project_detail( $project ) {
 		'</div>',
 	] );
 }
+
+/**
+ * Get past projects for current user.
+ *
+ * @return Pods.
+ */
+function get_user_past_projects() {
+	require_once 'sessions.php';
+	$past_sessions = get_user_past_sessions();
+	$project_ids = [];
+	while ( $past_sessions->fetch() ) {
+		$projects = $past_sessions->field( 'projects' );
+		if ( is_array( $projects ) ) {
+			foreach ( $projects as $project ) {
+				$project_ids[] = $project['pod_item_id'];
+			}
+		}
+	}
+	return pods( 'project', [ 'where' => 'ID IN (' . implode( ', ', $project_ids ) . ')' ] );
+}
+
