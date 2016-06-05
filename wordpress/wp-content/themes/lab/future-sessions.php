@@ -14,7 +14,7 @@ if ( $future_sessions_count > 0 ) : ?>
 	<div class="box">
 		Upcoming sessions
 		<?php while ( $future_sessions->fetch() ) :
-			echo session_detail( $future_sessions );
+			echo session_detail( $future_sessions ); // WPCS: XSS OK.
 		endwhile; ?>
 	</div>
 <?php else : ?>

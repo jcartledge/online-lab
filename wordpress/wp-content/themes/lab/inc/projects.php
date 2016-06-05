@@ -44,12 +44,17 @@ function project_detail( $project, $detail = true ) {
  */
 function get_user_past_projects() {
 	require_once 'sessions.php';
-	$past_sessions = get_user_past_sessions();
-	$project_ids = [];
-	while ( $past_sessions->fetch() ) {
-		$project_ids = array_merge( $project_ids, get_session_project_ids( $past_sessions ) );
-	}
-	return get_projects_from_ids( $project_ids );
+	return get_projects_for_session( get_user_past_sessions() );
+}
+
+/**
+ * Get future projects for current user.
+ *
+ * @return Pods.
+ */
+function get_user_future_projects() {
+	require_once 'sessions.php';
+	return get_projects_for_session( get_user_future_sessions() );
 }
 
 /**
@@ -60,10 +65,12 @@ function get_user_past_projects() {
  */
 function get_session_project_ids( $session ) {
 	$project_ids = [];
-	$projects = $session->field( 'projects' );
-	if ( is_array( $projects ) ) {
-		foreach ( $projects as $project ) {
-			$project_ids[] = $project['pod_item_id'];
+	while ( $session->fetch() ) {
+		$projects = $session->field( 'projects' );
+		if ( is_array( $projects ) ) {
+			foreach ( $projects as $project ) {
+				$project_ids[] = $project['pod_item_id'];
+			}
 		}
 	}
 	return $project_ids;

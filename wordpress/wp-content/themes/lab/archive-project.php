@@ -19,7 +19,7 @@ get_header(); ?>
 			</header>
 			<?php include 'past-projects.php'; ?>
 			<?php include 'current-session-projects.php'; ?>
-			<?php // include 'future-projects.php'; ?>
+			<?php include 'future-projects.php'; ?>
 		</main>
 	</div>
 <?php get_footer();
