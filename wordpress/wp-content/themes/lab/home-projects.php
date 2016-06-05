@@ -5,20 +5,15 @@
  * @package lab
  */
 
-$projects = pods( 'project' )->find([
-	'limit' => 3,
-]);
+require_logged_in_user();
+
+require_once 'inc/projects.php';
+
+$projects = pods( 'project' )->find( [ 'limit' => 3 ] );
 ?>
 <div class="box">
-<?php
-while ( $projects->fetch() ) :
-	$url = $projects->field( 'permalink' );
-?>
-	<p>
-		<a href="<?php echo esc_url( $url ); ?>"><?php esc_html_e( $projects->field( 'name' ) ); ?></a>
-	</p>
-<?php
-endwhile;
-?>
+	<?php while ( $projects->fetch() ) :
+		echo project_detail( $projects, false ); // WPCS: XSS OK.
+	endwhile; ?>
 	<a href="/projects">See all projects</a>
 </div>

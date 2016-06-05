@@ -18,7 +18,7 @@ get_header(); ?>
 				<h1><?php esc_html_e( $heading ); ?></h1>
 			</header>
 			<?php include 'past-projects.php'; ?>
-			<?php // include 'home-projects.php'; ?>
+			<?php include 'current-session-projects.php'; ?>
 			<?php // include 'future-projects.php'; ?>
 		</main>
 	</div>

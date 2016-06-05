@@ -15,7 +15,7 @@ if ( $past_projects_count > 0 ) :
 		<div class="box">
 			Past projects
 			<?php while ( $past_projects->fetch() ) :
-				echo session_detail( $past_projects ); // WPCS: XSS OK.
+				echo project_detail( $past_projects, false ); // WPCS: XSS OK.
 			endwhile; ?>
 			<a href="/projects/">Hide past projects</a>
 		</div>
