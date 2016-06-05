@@ -1,6 +1,6 @@
 {
     "meta": {
-        "build": 1463894427,
+        "build": 1465112680,
         "version": "2.6.5.2"
     },
     "pods": {
@@ -118,14 +118,44 @@
                     "sister_id": "",
                     "type": "pick",
                     "unique": "0",
-                    "weight": 1
+                    "weight": 2
                 },
-                "session_time": {
+                "session_end_time": {
                     "admin_only": "0",
                     "class": "",
-                    "datetime_allow_empty": "1",
+                    "datetime_allow_empty": "0",
                     "datetime_format": "fjy",
-                    "datetime_html5": "0",
+                    "datetime_html5": "1",
+                    "datetime_repeatable": 0,
+                    "datetime_time_format": "h_mma",
+                    "datetime_time_format_24": "hh_mm",
+                    "datetime_time_type": "12",
+                    "description": "",
+                    "help": "",
+                    "hidden": "0",
+                    "id": 43,
+                    "label": "Session end time",
+                    "name": "session_end_time",
+                    "pick_object": "",
+                    "pick_val": "",
+                    "read_only": "0",
+                    "required": "1",
+                    "restrict_capability": "0",
+                    "restrict_role": "1",
+                    "roles_allowed": [
+                        "administrator",
+                        "mentor"
+                    ],
+                    "sister_id": "",
+                    "type": "datetime",
+                    "weight": 1
+                },
+                "session_start_time": {
+                    "admin_only": "0",
+                    "class": "",
+                    "datetime_allow_empty": "0",
+                    "datetime_format": "fjy",
+                    "datetime_html5": "1",
                     "datetime_repeatable": "0",
                     "datetime_time_format": "h_mma",
                     "datetime_time_format_24": "hh_mm",
@@ -134,16 +164,17 @@
                     "help": "",
                     "hidden": "0",
                     "id": 10,
-                    "label": "Session time",
-                    "name": "session_time",
+                    "label": "Session start time",
+                    "name": "session_start_time",
                     "pick_object": "",
                     "pick_val": "",
                     "read_only": "0",
-                    "required": "0",
+                    "required": "1",
                     "restrict_capability": "0",
-                    "restrict_role": "0",
+                    "restrict_role": "1",
                     "roles_allowed": [
-                        "administrator"
+                        "administrator",
+                        "mentor"
                     ],
                     "sister_id": "",
                     "type": "datetime",
@@ -164,6 +195,7 @@
             "publicly_queryable": "1",
             "query_var": "1",
             "rewrite": "1",
+            "rewrite_custom_slug": "sessions",
             "rewrite_feeds": "0",
             "rewrite_pages": "0",
             "rewrite_with_front": "0",

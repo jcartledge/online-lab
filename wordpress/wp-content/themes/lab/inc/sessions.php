@@ -25,7 +25,7 @@ function get_user_sessions( $where = [], $args = [] ) {
 	$where = implode( ' AND ', $where );
 	$default_args = [
 		'where' => $where,
-		'order_by' => 'session_time.meta_value ASC',
+		'order_by' => 'session_start_time.meta_value ASC',
 	];
 	$args = array_merge( $default_args, $args );
 	return pods( 'session' )->find( $args );
@@ -38,7 +38,7 @@ function get_user_sessions( $where = [], $args = [] ) {
  * @return Pods.
  */
 function get_user_future_sessions( $args = [] ) {
-	return get_user_sessions( [ 'session_time.meta_value > NOW()' ], $args );
+	return get_user_sessions( [ 'session_start_time.meta_value > NOW()' ], $args );
 }
 
 /**
@@ -48,7 +48,7 @@ function get_user_future_sessions( $args = [] ) {
  * @return Pods.
  */
 function get_user_past_sessions( $args = [] ) {
-	return get_user_sessions( [ 'session_time.meta_value < NOW()' ], $args );
+	return get_user_sessions( [ 'session_start_time.meta_value < NOW()' ], $args );
 }
 
 /**
@@ -68,8 +68,8 @@ function get_next_session() {
  */
 function session_detail( $session ) {
 	$session_name = $session->field( 'name' );
-	$session_time = session_time( $session );
-	$session_label = sprintf( '%s - %s', $session_name, $session_time );
+	$session_start_time = session_start_time( $session );
+	$session_label = sprintf( '%s - %s', $session_name, $session_start_time );
 	$url = $session->field( 'permalink' );
 	return sprintf( '<p><a href="%s">%s</a></p>', esc_url( $url ), esc_html( $session_label ) );
 }
@@ -80,6 +80,6 @@ function session_detail( $session ) {
  * @param Pods $session The Pods object containing the session.
  * @return String HTML
  */
-function session_time( $session ) {
-	return ( new Carbon( $session->field( 'session_time' ) ) )->format( SESSION_TIME_FORMAT );
+function session_start_time( $session ) {
+	return ( new Carbon( $session->field( 'session_start_time' ) ) )->format( SESSION_TIME_FORMAT );
 }

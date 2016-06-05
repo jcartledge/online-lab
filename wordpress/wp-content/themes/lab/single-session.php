@@ -12,7 +12,7 @@ require_once 'inc/projects.php';
 $slug = pods_v( 'last', 'url' );
 $session = pods( 'session', $slug );
 $session_name = $session->field( 'name' );
-$session_time = session_time( $session );
+$session_start_time = session_start_time( $session );
 $session_projects = $session->field( 'projects' );
 
 get_header(); ?>
@@ -22,7 +22,7 @@ get_header(); ?>
 
 			<h1><?php esc_html_e( $session_name ); ?></h1>
 
-			<p class="session-date"><?php esc_html_e( $session_time ); ?></p>
+			<p class="session-date"><?php esc_html_e( $session_start_time ); ?></p>
 			<p class="session-group unimplemented">
 				[Group 1](<a href="#" class="unimplemented">group detail</a>)
 			</p>
