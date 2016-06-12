@@ -8,7 +8,8 @@
 use Carbon\Carbon;
 require_once 'groups.php';
 
-define( 'SESSION_TIME_FORMAT', 'l F j, g.ia' );
+define( 'SESSION_TIME_FORMAT', 'g.ia' );
+define( 'SESSION_DATETIME_FORMAT', 'l F j, ' . SESSION_TIME_FORMAT );
 
 /**
  * Get sessions for current user.
@@ -67,19 +68,36 @@ function get_next_session() {
  * @return string HTML
  */
 function session_detail( $session ) {
-	$session_name = $session->field( 'name' );
-	$session_start_time = session_start_time( $session );
-	$session_label = sprintf( '%s - %s', $session_name, $session_start_time );
-	$url = $session->field( 'permalink' );
-	return sprintf( '<p><a href="%s">%s</a></p>', esc_url( $url ), esc_html( $session_label ) );
+	return sprintf(
+		'<p><a href="%s">%s</a></p>',
+		esc_url( $session->field( 'permalink' ) ),
+		esc_html( session_label( $session ) )
+	);
+}
+
+/**
+ * Label (start time - end time) for a session.
+ *
+ * @param Pods $session The Pods object containing the session.
+ * @return string HTML.
+ */
+function session_label( $session ) {
+	$session_start_time = session_time( $session );
+	$session_end_time = session_time( $session, 'end' );
+	return sprintf( '%s - %s', $session_start_time, $session_end_time );
 }
 
 /**
  * Formatted session time string.
  *
- * @param Pods $session The Pods object containing the session.
- * @return String HTML
+ * @param Pods   $session The Pods object containing the session.
+ * @param string $which Should be 'start' (default) or 'end'.
+ * @return String HTML.
  */
-function session_start_time( $session ) {
-	return ( new Carbon( $session->field( 'session_start_time' ) ) )->format( SESSION_TIME_FORMAT );
+function session_time( $session, $which = 'start' ) {
+	$format = [
+		'start' => SESSION_DATETIME_FORMAT,
+		'end' => SESSION_TIME_FORMAT,
+	][$which];
+	return ( new Carbon( $session->field( "session_${which}_time" ) ) )->format( $format );
 }

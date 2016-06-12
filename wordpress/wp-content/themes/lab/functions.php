@@ -212,3 +212,20 @@ add_filter( 'nav_menu_css_class', function ( $classes, $item ) {
 	}
 	return $classes;
 } , 10, 2 );
+
+add_filter( 'wp_insert_post_data', function ( $data, $postarr ) {
+	if ( 'session' === $data['post_type'] ) {
+		$data['post_name'] = wp_unique_post_slug(
+			$postarr['ID'],
+			$postarr['ID'],
+			'publish',
+			$data['post_type'],
+			0
+		);
+		if ( ! empty( $postarr['pods_meta_session_start_time'] ) ) {
+			$data['post_title'] = $postarr['pods_meta_session_start_time'];
+		}
+	}
+	return $data;
+}, 10, 2 );
+

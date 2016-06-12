@@ -1,6 +1,6 @@
 {
     "meta": {
-        "build": 1465207246,
+        "build": 1465698607,
         "version": "2.6.5.2"
     },
     "pods": {
@@ -252,7 +252,7 @@
                     "datetime_allow_empty": "0",
                     "datetime_format": "fjy",
                     "datetime_html5": "1",
-                    "datetime_repeatable": 0,
+                    "datetime_repeatable": "0",
                     "datetime_time_format": "h_mma",
                     "datetime_time_format_24": "hh_mm",
                     "datetime_time_type": "12",
@@ -274,6 +274,7 @@
                     ],
                     "sister_id": "",
                     "type": "datetime",
+                    "unique": "0",
                     "weight": 1
                 },
                 "session_start_time": {
@@ -337,9 +338,9 @@
             "supports_excerpt": "0",
             "supports_page_attributes": "0",
             "supports_post_formats": "0",
-            "supports_revisions": "0",
+            "supports_revisions": "1",
             "supports_thumbnail": "0",
-            "supports_title": "1",
+            "supports_title": "0",
             "supports_trackbacks": "0",
             "type": "post_type"
         }
