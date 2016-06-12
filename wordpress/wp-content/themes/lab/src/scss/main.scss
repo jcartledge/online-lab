@@ -53,3 +53,14 @@ h2 {
 .unimplemented, a[href="#"] {
 	background-color: #FFEEEE;
 }
+
+.site-title {
+	width: 120px;
+	&__link {
+		transition: opacity 0.3s;
+		&:hover {
+			opacity: 0.6;
+		}
+	}
+	&__logo {}
+}

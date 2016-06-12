@@ -24,7 +24,14 @@
 
 	<header id="masthead" class="site-header" role="banner">
 		<div class="site-branding">
-			<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+			<p class="site-title">
+				<a class="site-title__link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+				<img
+					class="site-title__logo"
+					src="//thelab.org.au/thelab_v2/wp-content/uploads/2016/04/lab-logo-v3.png"
+					alt="<?php bloginfo( 'name' ); ?>">
+				</a>
+			</p>
 		</div><!-- .site-branding -->
 
 		<?php if ( is_user_logged_in() ) : ?>
@@ -33,7 +40,7 @@
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'main' ) ); ?>
 			</nav><!-- #site-navigation -->
 		<?php else :
-			wp_loginout( $_SERVER['REQUEST_URI'] );
+			wp_loginout( $_SERVER['REQUEST_URI'] ); // WPCS: XSS OK.
 		endif; ?>
 	</header><!-- #masthead -->
 
