@@ -1,6 +1,6 @@
 {
     "meta": {
-        "build": 1465778561,
+        "build": 1465780590,
         "version": "2.6.5.2"
     },
     "pods": {
@@ -180,7 +180,6 @@
         "8": {
             "alias": "",
             "built_in_taxonomies_category": "0",
-            "built_in_taxonomies_group": "0",
             "built_in_taxonomies_link_category": "0",
             "built_in_taxonomies_post_tag": "0",
             "can_export": "1",
@@ -289,6 +288,62 @@
                     "type": "datetime",
                     "unique": "0",
                     "weight": 0
+                },
+                "slack_url": {
+                    "admin_only": "0",
+                    "class": "",
+                    "description": "",
+                    "help": "",
+                    "hidden": "0",
+                    "id": 87,
+                    "label": "Slack URL",
+                    "name": "slack_url",
+                    "pick_object": "",
+                    "pick_val": "",
+                    "read_only": "0",
+                    "required": "0",
+                    "restrict_capability": "0",
+                    "restrict_role": "0",
+                    "roles_allowed": [
+                        "administrator"
+                    ],
+                    "sister_id": "",
+                    "type": "website",
+                    "website_clickable": "0",
+                    "website_format": "normal",
+                    "website_html5": "0",
+                    "website_max_length": "255",
+                    "website_new_window": "0",
+                    "website_repeatable": 0,
+                    "weight": 3
+                },
+                "zoom_url": {
+                    "admin_only": "0",
+                    "class": "",
+                    "description": "",
+                    "help": "",
+                    "hidden": "0",
+                    "id": 88,
+                    "label": "Zoom URL",
+                    "name": "zoom_url",
+                    "pick_object": "",
+                    "pick_val": "",
+                    "read_only": "0",
+                    "required": "0",
+                    "restrict_capability": "0",
+                    "restrict_role": "0",
+                    "roles_allowed": [
+                        "administrator"
+                    ],
+                    "sister_id": "",
+                    "type": "website",
+                    "website_clickable": "0",
+                    "website_format": "normal",
+                    "website_html5": "0",
+                    "website_max_length": "255",
+                    "website_new_window": "0",
+                    "website_repeatable": 0,
+                    "weight": 4
                 }
             },
             "has_archive": "1",
