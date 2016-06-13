@@ -26,7 +26,7 @@ function get_user_sessions( $where = [], $args = [] ) {
 	$where = implode( ' AND ', $where );
 	$default_args = [
 		'where' => $where,
-		'order_by' => 'session_start_time.meta_value ASC',
+		'orderby' => 'session_start_time.meta_value ASC',
 	];
 	$args = array_merge( $default_args, $args );
 	return pods( 'session' )->find( $args );
@@ -64,12 +64,14 @@ function get_next_session() {
 /**
  * Return HTML for a session detail listing.
  *
- * @param Pods $session The Pods object contining the session.
+ * @param Pods   $session The Pods object contining the session.
+ * @param string $label Label to prepend.
  * @return string HTML
  */
-function session_detail( $session ) {
+function session_detail( $session, $label = '' ) {
 	return sprintf(
-		'<p><a href="%s">%s</a></p>',
+		'<p>%s<a href="%s">%s</a></p>',
+		esc_html( $label ),
 		esc_url( $session->field( 'permalink' ) ),
 		esc_html( session_label( $session ) )
 	);

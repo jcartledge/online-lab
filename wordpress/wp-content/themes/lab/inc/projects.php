@@ -18,11 +18,12 @@ function load_project( $project_array ) {
 /**
  * Return HTML for a project  detail listing.
  *
- * @param Pods $project The Pods object contining the project.
- * @param Bool $detail  Show the teaser/excerpt/summary.
+ * @param Pods   $project The Pods object contining the project.
+ * @param bool   $detail  Show the teaser/excerpt/summary.
+ * @param string $label   Text to prepend.
  * @return string HTML
  */
-function project_detail( $project, $detail = true ) {
+function project_detail( $project, $detail = true, $label = '' ) {
 	if ( is_array( $project ) ) {
 		$project = load_project( $project );
 	}
@@ -31,7 +32,7 @@ function project_detail( $project, $detail = true ) {
 	$description = $project->display( 'post_content' );
 	return implode( '', [
 		'<div class="project-summary">',
-		sprintf( '<p class="project-summary__link"><a href="%s">%s</a></p>', $url, $name ),
+		sprintf( '<p class="project-summary__link">%s<a href="%s">%s</a></p>', $label, $url, $name ),
 		$detail ? sprintf( '<p class="project-summary__description">%s</p>', $description ) : '',
 		'</div>',
 	] );
@@ -73,6 +74,7 @@ function get_session_project_ids( $session ) {
 			}
 		}
 	}
+	$session->reset();
 	return $project_ids;
 }
 
