@@ -21,11 +21,13 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-			<h1><?php esc_html_e( session_label( $session ) ); ?></h1>
+			<h1>
+				Session for <?php echo $group_links; // WPCS: XSS OK. ?><br> 
+				<?php esc_html_e( session_label( $session ) ); ?>
+			</h1>
 
 			<p class="session-date"><?php esc_html_e( $session_start_time ); ?></p>
 			<p class="session-group">
-				<?php echo $group_links; // WPCS: XSS OK. ?>
 			</p>
 
 			<p class="session-description unimplemented">
@@ -38,6 +40,22 @@ get_header(); ?>
 					echo project_detail( $session_project ); // WPCS: XSS OK.
 				endforeach;
 			endif; ?>
+
+			<h2>Connect</h2>
+			<ul class="connect-list">
+				<li class="connect-list__slack">
+					<a target="_blank" href="<?php esc_html_e( $session->field( 'slack_url' ) ); ?>">
+						<i class="fa fa-slack"></i>
+						Join the Slack chat.
+					</a>
+				</li>
+				<li class="connect-list__zoom">
+					<a target="_blank" href="<?php esc_html_e( $session->field( 'zoom_url' ) ); ?>">
+						<i class="fa fa-video-camera"></i>
+						Join the Zoom video meeting.
+					</a>
+				</li>
+			</ul>
 
 		</main>
 	</div>
