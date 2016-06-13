@@ -11,7 +11,7 @@ function deploy (target) {
 
     const globs = [
       '**',
-      '!**/node_modules/',
+      '!**/node_modules/**',
       '!*.log',
       '!wp-config.php',
       '!wp-content/advanced-cache.php',
