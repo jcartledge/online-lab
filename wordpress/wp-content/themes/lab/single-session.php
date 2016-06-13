@@ -21,10 +21,8 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-			<h1>
-				Session for <?php echo $group_links; // WPCS: XSS OK. ?><br> 
-				<?php esc_html_e( session_label( $session ) ); ?>
-			</h1>
+			<h1>Session for <?php echo $group_links; // WPCS: XSS OK. ?></h1>
+			<h2><?php esc_html_e( session_label( $session ) ); ?></h2>
 
 			<p class="session-date"><?php esc_html_e( $session_start_time ); ?></p>
 			<p class="session-group">
