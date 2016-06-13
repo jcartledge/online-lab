@@ -64,3 +64,43 @@ h2 {
 	}
 	&__logo {}
 }
+
+.accordion {
+	color: #666;
+	background-color: #F6F6F6;
+	border: 1px solid #EEE;
+	border-radius: 5px;
+	> p {
+		display: none;
+	}
+}
+.accordion-title {
+	vertical-align: middle;
+	font-size: 1em;
+	font-weight: normal;
+	margin: 0;
+	padding: 0.5em;
+	padding-left: 1em;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	&:hover {
+		background-color: #EEE;
+	}
+	&:not(:first-of-type) {
+		border-top: 1px solid #EEE;
+	}
+	&:before {
+		content: '+';
+		font-family: monospace;
+		font-size: 24px;
+		line-height: 24px;
+		margin-right: 0.5em;
+	}
+	&.open:before {
+		content: '-';
+	}
+}
+.accordion-content {
+	padding: 2em 1em;
+	border-top: 1px solid #EEE;
+}

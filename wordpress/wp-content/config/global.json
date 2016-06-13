@@ -1,5 +1,5 @@
 {
-    "active_plugins": "a:10:{i:0;s:29:\"disable-blog\/disable-blog.php\";i:1;s:25:\"fakerpress\/fakerpress.php\";i:2;s:17:\"groups\/groups.php\";i:3;s:13:\"pods\/init.php\";i:4;s:40:\"simple-no-comments\/simple-no-comment.php\";i:5;s:39:\"simplemodal-login\/simplemodal-login.php\";i:6;s:37:\"user-role-editor\/user-role-editor.php\";i:7;s:64:\"video-conferencing-with-zoom-api\/video-conferencing-zoom-api.php\";i:8;s:24:\"wp-basic-auth\/plugin.php\";i:9;s:17:\"wp-cfm\/wp-cfm.php\";}",
+    "active_plugins": "a:11:{i:0;s:45:\"accordion-shortcodes\/accordion-shortcodes.php\";i:1;s:29:\"disable-blog\/disable-blog.php\";i:2;s:25:\"fakerpress\/fakerpress.php\";i:3;s:17:\"groups\/groups.php\";i:4;s:13:\"pods\/init.php\";i:5;s:40:\"simple-no-comments\/simple-no-comment.php\";i:6;s:39:\"simplemodal-login\/simplemodal-login.php\";i:7;s:37:\"user-role-editor\/user-role-editor.php\";i:8;s:64:\"video-conferencing-with-zoom-api\/video-conferencing-zoom-api.php\";i:9;s:24:\"wp-basic-auth\/plugin.php\";i:10;s:17:\"wp-cfm\/wp-cfm.php\";}",
     "admin_email": "jcartledge@gmail.com",
     "avatar_default": "mystery",
     "avatar_rating": "G",
