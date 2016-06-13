@@ -9,6 +9,7 @@ use Carbon\Carbon;
 include_once 'inc/sessions.php';
 
 $next_session = get_next_session();
+$sessions_url = site_url( '/sessions/' );
 
 if ( $next_session->fetch() ) :
 	$session_start_time = new Carbon( $next_session->field( 'session_start_time' ) );
@@ -20,8 +21,8 @@ if ( $next_session->fetch() ) :
 		on <?php esc_html_e( $session_start_time->format( SESSION_DATETIME_FORMAT ) ); ?>.<br>
 		<a href="<?php echo esc_url( $url ); ?>">Go to the session now</a>.
 	</p>
-	<?php if ( empty( $show_all ) && '/sessions/' !== filter_input( INPUT_SERVER, 'REQUEST_URI' ) ) : ?>
-	<p><a href="/sessions">See all sessions</a></p>
+	<?php if ( empty( $show_all ) && filter_input( INPUT_SERVER, 'REQUEST_URI' ) !== $sessions_url ) : ?>
+	<p><a href="<?php echo $sessions_url; // WPCS: XSS OK. ?>">See all sessions</a></p>
 	<?php endif; ?>
 </div>
 <?php
