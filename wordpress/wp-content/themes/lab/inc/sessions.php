@@ -22,7 +22,7 @@ function get_user_sessions( $where = [], $args = [] ) {
 	$group_names = implode( ', ', array_map( function( $name ) {
 		return sprintf( '"%s"', $name );
 	}, user_group_names() ) );
-	$where[] = sprintf( 'groups-groups_read_post.meta_value IN (%s)', $group_names );
+	$where[] = $group_names ? sprintf( 'groups-groups_read_post.meta_value IN (%s)', $group_names ) : 'false';
 	$where = implode( ' AND ', $where );
 	$default_args = [
 		'where' => $where,
@@ -98,6 +98,6 @@ function session_time( $session, $which = 'start' ) {
 	$format = [
 		'start' => SESSION_DATETIME_FORMAT,
 		'end' => SESSION_TIME_FORMAT,
-	][$which];
+	][ $which ];
 	return ( new Carbon( $session->field( "session_${which}_time" ) ) )->format( $format );
 }

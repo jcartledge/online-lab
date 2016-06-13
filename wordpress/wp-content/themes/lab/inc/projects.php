@@ -83,7 +83,7 @@ function get_session_project_ids( $session ) {
  * @return Pods Project(s).
  */
 function get_projects_from_ids( $project_ids ) {
-	$where = $project_ids ? 'ID IN (' . implode( ', ', $project_ids ) . ')' : '-1';
+	$where = $project_ids ? 'ID IN (' . implode( ', ', $project_ids ) . ')' : 'false';
 	return pods( 'project', [ 'where' => $where ] );
 }
 
