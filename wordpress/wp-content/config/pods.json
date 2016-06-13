@@ -1,27 +1,9 @@
 {
     "meta": {
-        "build": 1465698607,
+        "build": 1465778561,
         "version": "2.6.5.2"
     },
     "pods": {
-        "15": {
-            "alias": "",
-            "built_in_post_types_participant_note": "0",
-            "built_in_post_types_project": "0",
-            "built_in_post_types_session": "0",
-            "description": "",
-            "fields": [],
-            "id": 15,
-            "label": "Groups",
-            "label_singular": "Group",
-            "name": "group",
-            "object": "",
-            "public": "1",
-            "show_in_menu": 1,
-            "show_ui": "1",
-            "storage": "meta",
-            "type": "taxonomy"
-        },
         "44": {
             "alias": "",
             "built_in_taxonomies_category": "0",
