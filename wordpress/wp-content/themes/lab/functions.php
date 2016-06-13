@@ -207,8 +207,11 @@ function require_logged_in_user( $message = 'Nope.' ) {
 
 add_filter( 'nav_menu_css_class', function ( $classes, $item ) {
 	$type = get_post_type();
-	if ( in_array( $type, [ 'project', 'session' ], true ) && "/${type}s" === $item->url ) {
-		$classes[] = 'current-menu-item';
+	if ( in_array( $type, [ 'project', 'session' ], true ) ) {
+		$menu_link = "/${type}s" ;
+		if ( substr( $item->url, -strlen( $menu_link ) ) === $menu_link ) {
+			$classes[] = 'current-menu-item';
+		}
 	}
 	return $classes;
 } , 10, 2 );
