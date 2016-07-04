@@ -7,7 +7,6 @@
 
 ?>
 <div class="box">
-	<p><a href="#">Go to my group</a></p>
-	<p><a href="#">Update my details</a></p>
-	<p><a href="#">See other members</a></p>
+	<p><a href="/groups">Go to my group</a></p>
+	<p><a href="<?php echo esc_url( get_edit_user_link() ); ?>">Update my details</a></p>
 </div>

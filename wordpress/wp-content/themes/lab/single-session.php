@@ -28,9 +28,15 @@ get_header(); ?>
 			<p class="session-group">
 			</p>
 
-			<p class="session-description unimplemented">
+			<p class="session-description">
 				<?php echo $session->display( 'post_content' ); // WPCS: XSS OK. ?>
 			</p>
+
+			<?php if ( current_user_can( 'edit_participant_notes' ) ) : ?>
+				<p>
+					<a target="_blank" href="<?php bloginfo( 'url' ); ?>/wp-admin/post-new.php?post_type=participant_note">Add participant note</a>
+				</p>
+			<?php endif; ?>
 
 			<?php if ( $session_projects ) : ?>
 				<h2>Projects</h2>

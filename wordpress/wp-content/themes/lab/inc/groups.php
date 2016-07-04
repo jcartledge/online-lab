@@ -11,16 +11,59 @@
  * @return Array groups.
  */
 function user_group_names() {
+	return array_map( function ( $group ) {
+		return $group->name;
+	}, user_groups() );
+}
+
+/**
+ * Get an array of groups the current user belongs to.
+ *
+ * @param array $excludes Names of groups to exclude from the results.
+ *
+ * @return array groups.
+ */
+function user_groups( $excludes = [ 'Registered' ] ) {
 	if ( ! is_user_logged_in() ) {
 		return [];
 	}
 	$user = new Groups_User( get_current_user_id() );
-	$group_names = array_map( function ( $group ) {
-		return $group->name;
-	}, $user->groups );
-	return array_filter($group_names, function ( $name ) {
-		return 'Registered' !== $name;
-	} );
+	return array_map(
+		function ( $group ) {
+			$group->members = group_users( $group );
+			return $group;
+		}, array_filter(
+			$user->groups,
+			function ( $group ) use ( $excludes ) {
+				return ! in_array( $group->name, $excludes, true );
+			}
+		)
+	);
+}
+
+/**
+ * Return userdata for a group.
+ *
+ * @param Groups_Group $group The group to retrieve users for.
+ *
+ * @return array get_userdata for each user ID.
+ */
+function group_users( $group ) {
+	$sql = sprintf(
+		'SELECT user_id FROM wp_groups_user_group WHERE group_id = %d',
+		$group->group_id
+	);
+	return array_filter(
+		array_map(
+			function ( $user ) {
+				return get_userdata( $user->user_id );
+			},
+			$GLOBALS['wpdb']->get_results( $sql )
+		),
+		function ( $user ) {
+			return ! in_array( 'administrator', $user->roles, true );
+		}
+	);
 }
 
 /**
