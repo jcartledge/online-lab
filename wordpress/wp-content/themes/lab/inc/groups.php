@@ -67,6 +67,29 @@ function group_users( $group ) {
 }
 
 /**
+ * Userdata for group organised by roles.
+ *
+ * @param Groups_Group $group The group to retrieve users for.
+ *
+ * @return array get_userdata for each user ID.
+ */
+function group_users_by_role( $group ) {
+	$users = group_users( $group );
+	$roles = [
+		'mentor' => [],
+		'participant' => [],
+	];
+	return array_reduce( $users, function( $acc, $user ) {
+		if ( in_array( 'mentor', $user->roles, true ) ) {
+			$acc['mentor'][] = $user;
+		} else if ( in_array( 'participant', $user->roles, true ) ) {
+			$acc['participant'][] = $user;
+		}
+		return $acc;
+	}, $roles );
+}
+
+/**
  * Get the names of groups that can see this post.
  *
  * @return Array Group names.
