@@ -1,6 +1,6 @@
 @import "style";
 
-$fullWidth: 1080px; 
+$fullWidth: 1080px;
 $darkGreen: #003300;
 
 h2 {
@@ -34,7 +34,7 @@ h2 {
 		color: black;
 		text-decoration: none;
 	}
-	.current-menu-item a, 
+	.current-menu-item a,
 	a:hover {
 		color: $darkGreen;
 		border-bottom: 2px solid $darkGreen;
