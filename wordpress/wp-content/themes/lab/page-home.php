@@ -11,6 +11,7 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 			<?php if ( is_user_logged_in() ) : ?>
+				<?php the_field( 'intro_for_participants' ); ?>
 				<h2>Sessions</h2>
 				<?php include 'home-sessions.php'; ?>
 				<h2>Projects</h2>
