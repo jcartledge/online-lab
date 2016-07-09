@@ -29,7 +29,7 @@
 				<a class="site-title__link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 				<img
 					class="site-title__logo"
-					src="//thelab.org.au/thelab_v2/wp-content/uploads/2016/04/lab-logo-v3.png"
+					src="//thelab.org.au/online/wp-content/uploads/2016/07/onlinelab_logo_small.png"
 					alt="<?php bloginfo( 'name' ); ?>">
 				</a>
 			</p>
