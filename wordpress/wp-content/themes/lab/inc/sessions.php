@@ -66,6 +66,15 @@ function get_user_future_sessions( $args = [] ) {
 }
 
 /**
+ * Get current session for current user.
+ *
+ * @return Pods.
+ */
+function get_current_session() {
+	return get_user_current_sessions( [ 'limit' => 1 ] );
+}
+
+/**
  * Get next session for current user.
  *
  * @return Pods.

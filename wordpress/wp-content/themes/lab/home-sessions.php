@@ -8,17 +8,27 @@
 use Carbon\Carbon;
 include_once 'inc/sessions.php';
 
-$next_session = get_next_session();
 $sessions_url = site_url( '/sessions/' );
 
-if ( $next_session->fetch() ) :
-	$session_start_time = new Carbon( $next_session->field( 'session_start_time' ) );
-	$url = $next_session->field( 'permalink' );
-?>
+$current_session = get_current_session();
+if ( $current_session->fetch() ) {
+	$url = $current_session->field( 'permalink' );
+} else {
+	$next_session = get_next_session();
+	if ( $next_session->fetch() ) {
+		$session_start_time = new Carbon( $next_session->field( 'session_start_time' ) );
+		$url = $next_session->field( 'permalink' );
+	}
+}
+if ( $current_session || $next_session ) : ?>
 <div class="box">
 	<p>
-		Your next session is <?php esc_html_e( $session_start_time->diffForHumans() ); ?>,
-		on <?php esc_html_e( $session_start_time->format( SESSION_DATETIME_FORMAT ) ); ?>.<br>
+		<?php if ( $current_session ) : ?>
+			The current session has started.
+		<?php elseif ( $next_session ) : ?>
+			Your next session is <?php esc_html_e( $session_start_time->diffForHumans() ); ?>,
+			on <?php esc_html_e( $session_start_time->format( SESSION_DATETIME_FORMAT ) ); ?>.<br>
+		<?php endif; ?>
 		<a href="<?php echo esc_url( $url ); ?>">Go to the session now</a>.
 	</p>
 	<?php if ( empty( $show_all ) && filter_input( INPUT_SERVER, 'REQUEST_URI' ) !== $sessions_url ) : ?>
