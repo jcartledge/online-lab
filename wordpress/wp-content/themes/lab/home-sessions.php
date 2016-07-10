@@ -28,7 +28,7 @@ if ( $is_current_session || $is_next_session ) : ?>
 		<?php if ( $is_current_session ) : ?>
 			The current session has started.
 		<?php elseif ( $is_next_session ) : ?>
-			Your next session is <?php esc_html_e( $session_start_time->diffForHumans() ); ?>,
+			Your next session is
 			on <?php esc_html_e( $session_start_time->format( SESSION_DATETIME_FORMAT ) ); ?>.<br>
 		<?php endif; ?>
 		<a href="<?php echo esc_url( $url ); ?>">Go to the session now</a>.
