@@ -33,6 +33,29 @@ function get_user_sessions( $where = [], $args = [] ) {
 }
 
 /**
+ * Get past sessions for current user.
+ *
+ * @param Array $args Additional args for find.
+ * @return Pods.
+ */
+function get_user_past_sessions( $args = [] ) {
+	return get_user_sessions( [ 'session_end_time.meta_value < NOW()' ], $args );
+}
+
+/**
+ * Get current sessions for current user.
+ *
+ * @param Array $args Additional args for find.
+ * @return Pods.
+ */
+function get_user_current_sessions( $args = [] ) {
+	return get_user_sessions( [
+		'session_start_time.meta_value < NOW()',
+		'session_end_time.meta_value < NOW()',
+	], $args );
+}
+
+/**
  * Get future sessions for current user.
  *
  * @param Array $args Additional args for find.
@@ -40,16 +63,6 @@ function get_user_sessions( $where = [], $args = [] ) {
  */
 function get_user_future_sessions( $args = [] ) {
 	return get_user_sessions( [ 'session_start_time.meta_value > NOW()' ], $args );
-}
-
-/**
- * Get past sessions for current user.
- *
- * @param Array $args Additional args for find.
- * @return Pods.
- */
-function get_user_past_sessions( $args = [] ) {
-	return get_user_sessions( [ 'session_start_time.meta_value < NOW()' ], $args );
 }
 
 /**
