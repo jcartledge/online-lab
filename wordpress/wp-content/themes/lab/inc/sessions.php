@@ -51,7 +51,7 @@ function get_user_past_sessions( $args = [] ) {
 function get_user_current_sessions( $args = [] ) {
 	return get_user_sessions( [
 		'session_start_time.meta_value < NOW()',
-		'session_end_time.meta_value < NOW()',
+		'session_end_time.meta_value > NOW()',
 	], $args );
 }
 
