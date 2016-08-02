@@ -232,3 +232,22 @@ add_filter( 'wp_insert_post_data', function ( $data, $postarr ) {
 	return $data;
 }, 10, 2 );
 
+/**
+ * Add participant and session to participant notes list.
+ */
+add_filter('manage_participant_note_posts_columns' , function ( $columns ) {
+	return array_merge( $columns, [
+		'participant' => __( 'Participant' ),
+	]);
+});
+
+add_action( 'manage_participant_note_posts_custom_column' , function ( $column, $post_id ) {
+	$participant_note = pods( 'participant_note', $post_id );
+	$participants = $participant_note->field( 'participant' );
+	if ( $participants ) {
+		$participant = get_userdata( current( $participants ) );
+		echo sprintf( '%s %s', $participant->first_name, $participant->last_name );
+	} else {
+		echo '-';
+	}
+}, 10, 2 );
