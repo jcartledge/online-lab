@@ -233,9 +233,10 @@ add_filter( 'wp_insert_post_data', function ( $data, $postarr ) {
 }, 10, 2 );
 
 /**
- * Add participant and session to participant notes list.
+ * Add participant name to participant notes list.
  */
 add_filter('manage_participant_note_posts_columns' , function ( $columns ) {
+	unset($columns['title']);
 	return array_merge( $columns, [
 		'participant' => __( 'Participant' ),
 	]);
