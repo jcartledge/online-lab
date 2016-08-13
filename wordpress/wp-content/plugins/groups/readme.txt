@@ -3,8 +3,8 @@ Contributors: itthinx, proaktion
 Donate link: http://www.itthinx.com/plugins/groups
 Tags: access, access control, capability, capabilities, content, download, downloads, file, file access, files, group, groups, member, members, membership, memberships, paypal, permission, permissions, subscription, subscriptions, woocommerce
 Requires at least: 4.0
-Tested up to: 4.5.3
-Stable tag: 1.12.0
+Tested up to: 4.6
+Stable tag: 1.13.1
 License: GPLv3
 
 Groups is an efficient and powerful solution, providing group-based user membership management, group-based capabilities and content access control.
@@ -182,10 +182,14 @@ See also [Groups](http://www.itthinx.com/plugins/groups/)
 
 == Changelog ==
 
-= 1.12.0 =
-* Fixed an issue where resource paths were not correct with customized WP_CONTENT_DIR, WP_CONTENT_URL, WP_PLUGIN_DIR and WP_PLUGIN_URL.
+= 1.13.1 =
+* Fixed an issue where the wrong post count would be produced for statuses that do not represent a valid WooCommerce order status.
+* Added support for post counts with WooCommerce Subscriptions.
+
+= 1.13.0 =
+* Added a filter on wp_count_posts.
 
 == Upgrade Notice ==
 
-= 1.12.0 =
-This release fixes issues with customized plugin and content directories.
+= 1.13.1 =
+This release fixes an issue with order counts displayed on the WooCommerce order screen.
