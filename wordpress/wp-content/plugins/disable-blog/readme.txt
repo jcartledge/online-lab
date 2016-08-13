@@ -1,10 +1,10 @@
 === Disable Blog ===
 Contributors: joshuadnelson
 Donate link: https://joshuadnelson.com/donate/
-Tags: remove blog, disable blog, disable settings, disable blogging, disable feeds, posts, feeds, wordpress without blog, without blog, blogless, postless
+Tags: remove blog, disable blog, disable settings, disable blogging, disable feeds, posts, feeds
 Requires at least: 3.1.0
 Tested up to: 4.5.3
-Stable tag: 0.4.0
+Stable tag: 0.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,7 +24,7 @@ This plugin to disables the blog functionality of WordPress, mostly by hiding ad
 
 **Database**: This plugin will not delete anything in your database. If you don't want your posts, comments, categories, or tags, delete them prior to activation (or deactivate this plugin, delete them, and re-active). The only exception to the database modifications is related to the way your site displays it's front page, as mentioned above.
 
-**Support**: This plugin is maintain for free but **Please reach out** and I will assist you as soon as possible. You can visit the [support forums](https://wordpress.org/support/plugin/disable-blog) or the [issue](https://github.com/joshuadavidnelson/disable-blog/issues) section of the [GitHub repository](https://github.com/joshuadavidnelson/disable-blog).
+**Support**: This plugin is maintain for free but **Please reach out** and I will assist you as soon as possible. You can visit the [support forums](https://pippinsplugins.com) or the [issue](https://github.com/joshuadavidnelson/disable-blog/issues) section of the [GitHub repository](https://github.com/joshuadavidnelson/disable-blog).
 
 = View on GitHub & Contribute =
 [View this plugin on GitHub](https://github.com/joshuadavidnelson/disable-blog) to see a comprehensive list of this plugin's functionality and the To-Do list of items yet to be included, as well as log any issues (or visit the WP support forums linked above).
@@ -48,6 +48,9 @@ e.g.
 2. **I want to delete my posts and comments.** Deactivate the plugin, delete your posts (which will delete related comments), and delete any tags or categories you might want to remove as well. Then reactivate the plugin to hide everything.
 
 == Changelog ==
+
+= 0.4.1 =
+* Fix unintended redirect for custom admin pages under tools.php. Props to @greatislander for the catch.
 
 = 0.4.0 =
 A bunch of stuff:
@@ -100,6 +103,9 @@ A bunch of stuff:
 * Hide other post-related reading options, except Search Engine Visibility
 
 == Upgrade Notice ==
+
+= 0.4.1 =
+* Fix unintended redirect for custom admin pages under tools.php. Props to @greatislander for the catch.
 
 = 0.4.0 =
 A bunch of updates and fixes.
