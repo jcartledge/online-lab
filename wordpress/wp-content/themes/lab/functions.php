@@ -252,3 +252,20 @@ add_action( 'manage_participant_note_posts_custom_column' , function ( $column, 
 		echo '-';
 	}
 }, 10, 2 );
+
+/**
+ * Adds a submenu page under a custom post type parent.
+ */
+add_action('admin_menu', function () {
+	add_submenu_page(
+		'edit.php?post_type=session',
+		'Attendance',
+		'Attendance',
+		'groups_admin_groups',
+		'attendance',
+		function () {
+			require_once 'inc/attendance.php';
+			print_r( get_attendance_tables() );
+		}
+	);
+});

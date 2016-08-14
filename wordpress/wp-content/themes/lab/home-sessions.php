@@ -6,7 +6,7 @@
  */
 
 use Carbon\Carbon;
-include_once 'inc/sessions.php';
+require_once 'inc/sessions.php';
 
 $sessions_url = site_url( '/sessions/' );
 
