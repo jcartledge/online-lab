@@ -264,7 +264,8 @@ add_action('admin_menu', function () {
 		'manage_options',
 		'attendance',
 		function () {
-			echo 'the page';
+			require_once 'inc/attendance.php';
+			print_r( get_attendance_tables() );
 		}
 	);
 });
