@@ -18,32 +18,32 @@ function get_attendance_list() {
 
 	return array_map(function ( $group ) {
 		$users = group_users_by_role( $group )[ 'participant' ];
-		$sessions = query_posts([
-			'post_type' => 'session',
-			'meta_key' => 'groups-groups_read_post',
-			'meta_query' => [
-				[
-					'key'=> 'groups-groups_read_post',
-					'value' => $group->name,
-				],
-			],
-		]);
+		$session_pods = pods( 'session' )->find();
+		$sessions = [];
+		while ( $session_pods->fetch() ) {
+			$group_names = $session_pods->field( 'groups-groups_read_post' );
+			if ( in_array( strtolower($group->name), $group_names ) ) {
+				$sessions[] = [
+					'title' => $session_pods->field('post_title'),
+					'attendees' => $session_pods->field('attendees'),
+				];
+			}
+		}
 		return [
 			'name' => $group->name,
 			'columns' => array_map( function ( $session ) {
-				return [ 'label' => $session->post_title ];
+				return [ 'label' => $session[ 'title' ] ];
 			}, $sessions ),
 			'rows' => array_map( function ( $user ) use ( $sessions ) {
 				return [
 					'label' => $user->data->display_name,
-					'columns' => array_map( function ( $session ) {
-						return 'x';
+					'columns' => array_map( function ( $session ) use ( $user ) {
+						return user_attended_session( $user, $session ) ? 'X' : '-';
 					}, $sessions ),
 				];
 			}, $users ),
 		];
 	}, $groups );
-	
 }
 
 function get_attendance_tables () {
@@ -79,4 +79,13 @@ function get_attendance_table_body ( $group ) {
 			}, $row['columns'] ) )
 		);
 	}, $group['rows'] ) );
+}
+
+function user_attended_session ( $user, $session ) {
+	if ( is_array ( $session[ 'attendees' ] ) ) {
+		foreach ( $session[ 'attendees' ] as $attendee ) {
+			if ( $user->data->ID === $attendee['ID'] ) return true;
+		}
+	}
+	return false;
 }
