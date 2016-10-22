@@ -18,7 +18,10 @@ function get_attendance_list() {
 
 	return array_map(function ( $group ) {
 		$users = group_users_by_role( $group )[ 'participant' ];
-		$session_pods = pods( 'session' )->find();
+		$session_pods = pods( 'session' )->find( [
+			'limit' => -1,
+			'orderby' => 'session_start_time.meta_value',
+		] );
 		$sessions = [];
 		while ( $session_pods->fetch() ) {
 			$group_names = $session_pods->field( 'groups-groups_read_post' );
